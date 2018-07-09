@@ -1,6 +1,6 @@
 #https://towardsdatascience.com/implementing-a-trie-data-structure-in-python-in-less-than-100-lines-of-code-a877ea23c1a1
-from typing import Tuple
 
+from typing import Tuple
 
 class TrieNode(object):
     """
@@ -75,12 +75,20 @@ def find_prefix(root, prefix: str) -> Tuple[bool, int]:
 
 if __name__ == "__main__":
     root = TrieNode('*')
-    add(root, "hackathon")
-    add(root, 'hack')
+    # add(root, "hackathon")
+    # add(root, 'hack')
+    #
+    # print(find_prefix(root, 'hac'))
+    # print(find_prefix(root, 'hack'))
+    # print(find_prefix(root, 'hackathon'))
+    # print(find_prefix(root, 'ha'))
+    # print(find_prefix(root, 'hacka'))
+    # print(find_prefix(root, 'hammer'))
 
-    print(find_prefix(root, 'hac'))
-    print(find_prefix(root, 'hack'))
-    print(find_prefix(root, 'hackathon'))
-    print(find_prefix(root, 'ha'))
-    print(find_prefix(root, 'hacka'))
-print(find_prefix(root, 'hammer'))
+    add(root, "0.0.0.0")
+    add(root, "1.0.4.0")
+    add(root, "1.0.5.0")
+    add(root, "1.0.6.0")
+    add(root, "1.0.7.0")
+
+    print(find_prefix(root, "1.0"))
