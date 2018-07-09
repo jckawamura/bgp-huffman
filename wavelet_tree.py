@@ -1,4 +1,5 @@
 # Fonte: https://github.com/windKusanagi/Wavelet-trees
+# OBS: Python 2
 
 """
 This module implements a Wavelet tree
