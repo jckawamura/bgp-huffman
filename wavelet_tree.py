@@ -1,3 +1,5 @@
+# Fonte: https://github.com/windKusanagi/Wavelet-trees
+
 """
 This module implements a Wavelet tree
 """
