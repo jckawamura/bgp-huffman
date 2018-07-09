@@ -14,6 +14,7 @@ class TrieNode(object):
         self.word_finished = False
         # How many times this character appeared in the addition process
         self.counter = 1
+        next_hop: TrieNode
 
 
 def add(root, word: str):
@@ -92,3 +93,6 @@ if __name__ == "__main__":
     add(root, "1.0.7.0")
 
     print(find_prefix(root, "1.0"))
+    print(find_prefix(root, "0.0.0"))
+    print(find_prefix(root, "1.0.5.0"))
+    print(find_prefix(root, "1.1.1.1"))
