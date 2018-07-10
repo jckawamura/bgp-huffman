@@ -20,5 +20,5 @@ def read_bgp(file, first_row):
 
 
 # Teste com o arquivo de amostra
-src = "files/amostra_bgp.txt"
-print(read_bgp(src, 1))
+# src = "files/amostra_bgp.txt"
+# print(read_bgp(src, 1))
