@@ -1,6 +1,8 @@
 #https://towardsdatascience.com/implementing-a-trie-data-structure-in-python-in-less-than-100-lines-of-code-a877ea23c1a1
 
 from typing import Tuple
+import parse_bgp
+import pandas as pd
 
 class TrieNode(object):
     """
@@ -14,7 +16,6 @@ class TrieNode(object):
         self.word_finished = False
         # How many times this character appeared in the addition process
         self.counter = 1
-        next_hop: TrieNode
 
 
 def add(root, word: str):
@@ -75,6 +76,9 @@ def find_prefix(root, prefix: str) -> Tuple[bool, int]:
 
 
 if __name__ == "__main__":
+    src = "files/amostra_bgp.txt"
+    print(parse_bgp.read_bgp(src, 1))
+
     root = TrieNode('*')
     # add(root, "hackathon")
     # add(root, 'hack')
@@ -91,6 +95,7 @@ if __name__ == "__main__":
     add(root, "1.0.5.0")
     add(root, "1.0.6.0")
     add(root, "1.0.7.0")
+
 
     print(find_prefix(root, "1.0"))
     print(find_prefix(root, "0.0.0"))
