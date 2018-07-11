@@ -87,5 +87,5 @@ if __name__ == "__main__":
     print("\nTestes:\n")
     print(find_prefix(root, "00000000000000000000000000000000"))
     print(find_prefix(root, "00000001000000000000010000000000"))
-    print(find_prefix(root, "00000001000000000000010000000001"))
+    print(find_prefix(root, "000000010000000000000100000000001"))
     print(find_prefix(root, "00000001000000000000010000000010"))
