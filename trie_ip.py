@@ -1,6 +1,6 @@
 # https://towardsdatascience.com/implementing-a-trie-data-structure-in-python-in-less-than-100-lines-of-code-a877ea23c1a1
 
-from typing import Tuple
+from typing import Tuple, Any
 import parse_bgp
 import pandas as pd
 
@@ -49,7 +49,7 @@ def add(root, word: str, label: int):
     node.label = label
 
 
-def find_prefix(root, prefix: str) -> Tuple[bool, int, int]:
+def find_prefix(root, prefix: str) -> Tuple[bool, int, Any]:
     """
     Check and return
       1. If the prefix exsists in any of the words we added so far
@@ -59,7 +59,7 @@ def find_prefix(root, prefix: str) -> Tuple[bool, int, int]:
     # If the root node has no children, then return False.
     # Because it means we are trying to search in an empty trie
     if not root.children:
-        return False, 0, 0  # TODO: corrigir retorno do label
+        return False, 0, None  # TODO: corrigir retorno do label
     for char in prefix:
         char_not_found = True
         # Search through all the children of the present `node`
@@ -72,7 +72,7 @@ def find_prefix(root, prefix: str) -> Tuple[bool, int, int]:
                 break
         # Return False anyway when we did not find a char.
         if char_not_found:
-            return False, 0, 0  # TODO: corrigir retorno do label
+            return False, 0, None  # TODO: corrigir retorno do label
     # Well, we are here means we have found the prefix. Return true to indicate that
     # And also the counter of the last node. This indicates how many words have this
     # prefix
