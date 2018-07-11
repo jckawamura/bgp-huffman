@@ -68,7 +68,7 @@ if __name__ == "__main__":
     bgp_table = bgp.read_bgp(src, 1)
     ip_label_list = bgp.ip_next_hop(bgp_table)
 
-    root = TrieNode('*', 4)
+    root = TrieNode('*')
 
     for x in ip_label_list:
         add(root, x[0], x[1])
