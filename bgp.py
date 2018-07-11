@@ -29,6 +29,5 @@ def ip_next_hop(bgp: pd.DataFrame):
         label = ipaddress.ip_address(row['Next Hop'])
         label = str(label).rpartition('.')[2]
         ip_bin = str(ip_bin[2:].zfill(32))
-        print(ip_bin, label)
         ip_label.append([ip_bin, label])
     return ip_label
