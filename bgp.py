@@ -1,6 +1,7 @@
 import pandas as pd
 import ipaddress
 
+
 # read_bgp():   retorna uma tabela (DataFrame) com as colunas Network e Next Hop a partir da leitura de um arquivo de
 #               BGP. São mantidas apenas as melhores rotas.
 # file:         caminho do arquivo que contém a tabela BGP.
@@ -19,16 +20,15 @@ def read_bgp(file, first_row):
     return bgp
 
 
-# Teste com o arquivo de amostra
-src = "files/amostra_bgp.txt"
-# print(read_bgp(src, 1))
-
-
+# ip_next_hop(): retorna uma lista com as duplas IP em binário e label
+# bgp: DataFrame da tabela BGP
 def ip_next_hop(bgp: pd.DataFrame):
+    ip_label = []
     for index, row in bgp.iterrows():
-        a = bin(int(ipaddress.ip_network(row['Network'])[0]))
-        b = ipaddress.ip_address(row['Next Hop'])
-        b = str(b).rpartition('.')[2]
-        print(a, b)
-
-ip_next_hop(read_bgp(src, 1))
+        ip_bin = bin(int(ipaddress.ip_network(row['Network'])[0]))
+        label = ipaddress.ip_address(row['Next Hop'])
+        label = str(label).rpartition('.')[2]
+        ip_bin = str(ip_bin[2:].zfill(32))
+        print(ip_bin, label)
+        ip_label.append([ip_bin, label])
+    return ip_label
