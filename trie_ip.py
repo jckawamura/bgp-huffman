@@ -1,7 +1,7 @@
 # https://towardsdatascience.com/implementing-a-trie-data-structure-in-python-in-less-than-100-lines-of-code-a877ea23c1a1
 
 from typing import Tuple, Any
-import parse_bgp
+import bgp
 import pandas as pd
 
 
