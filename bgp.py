@@ -14,6 +14,7 @@ def read_bgp(file, first_row):
 
     # Devemos manter apenas as melhores rotas
     bgp['Network'].fillna(method='ffill', inplace=True)  # replica o IP anterior quando não houver (NaN)
+    bgp['Next Hop'].fillna(method='backfill', inplace=True) # replica o próximo Next Hop quando não houver (NaN)
     bgp.dropna(subset=['Status'], inplace=True)  # mantém apenas as rotas com "Status" '>', ou seja, as melhores rotas
     # TODO: Testar se existe algum status diferente de '>'
     bgp.drop(axis=1, labels=['Status'], inplace=True)  # a coluna "Status" deixa de ser útil
@@ -26,6 +27,7 @@ def ip_next_hop(bgp: pd.DataFrame):
     ip_label = []
     for index, row in bgp.iterrows():
         ip_network = ipaddress.ip_network(row['Network'])
+        # print(ip_network)
 
         ip_length = str(ip_network).rpartition('/')[2]
 
