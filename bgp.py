@@ -26,15 +26,27 @@ def ip_next_hop(bgp: pd.DataFrame):
     ip_label = []
     for index, row in bgp.iterrows():
         ip_network = ipaddress.ip_network(row['Network'])
-        ip_bin = bin(int(ip_network[0]))
+
         ip_length = str(ip_network).rpartition('/')[2]
+
+        ip_bin = str(bin(int(ipaddress.ip_address(ip_network[0])))[2:].zfill(32))[:int(ip_length)]
+
         label = ipaddress.ip_address(row['Next Hop'])
         label = str(label).rpartition('.')[2]
-        ip_bin = str(ip_bin[2:].zfill(int(ip_length)))
+
         ip_label.append([ip_bin, label])
     return ip_label
+
+
+def ip_to_bin(ip):
+    ip = ipaddress.ip_address(ip)
+    ip_bin = bin(int(ip))
+    ip_bin = str(ip_bin[2:].zfill(32))
+    return ip_bin
+
 
 # src = "files/amostra_bgp.txt"
 # bgp_table = read_bgp(src, 1)
 # ip_label_list = ip_next_hop(bgp_table)
 # print(ip_label_list)
+# print(ip_to_bin("1.0.4.0"))
