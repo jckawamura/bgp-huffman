@@ -15,6 +15,10 @@ class TrieNode(object):
 
 def add(root, word: str, label: int):
     node = root
+    if word == '':
+        root.label = label
+        # root.word_finished = True
+        return
     for char in word:
         found_in_child = False
         for child in node.children:
@@ -33,7 +37,7 @@ def add(root, word: str, label: int):
 
 def leafpush(root):
     if root.word_finished:
-        return True
+        return
     else:
         for child in root.children:
             if child.char:
@@ -47,7 +51,7 @@ def leafpush(root):
                 new_node = TrieNode('1', root.label)
             new_node.word_finished = True
             root.children.append(new_node)
-            return True
+            return
         root.label = None
 
 
@@ -69,23 +73,18 @@ if __name__ == "__main__":
     ip_label_list = bgp.ip_next_hop(bgp_table)
 
     root = TrieNode('*')
-
     for x in ip_label_list:
         add(root, x[0], x[1])
 
-    # add(root, "100", 4)
-    # add(root, "0", 40)
-    # add(root, "000", 43)
-    # add(root, "0111", 42)
-    #
-    #
+    # add(root, "000000010000000000000100", 42)
+
     leafpush(root)
 
     print("Tabela BGP\n", bgp_table)
     print("\nConversão da tabela BGP\n", ip_label_list)
 
     print("\nTestes:\n")
-    print(find_prefix(root, "00000000000000000000000000000000"))
-    print(find_prefix(root, "00000001000000000000010000000000"))
-    print(find_prefix(root, "000000010000000000000100000000001"))
-    print(find_prefix(root, "00000001000000000000010000000010"))
+    print(find_prefix(root, bgp.ip_to_bin("0.0.0.0")))
+    print(find_prefix(root, bgp.ip_to_bin("1.0.4.0")))
+    print(find_prefix(root, bgp.ip_to_bin("1.0.16.0")))
+    print(find_prefix(root, bgp.ip_to_bin("0.1.1.1")))
