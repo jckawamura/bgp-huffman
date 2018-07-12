@@ -2,7 +2,6 @@
 
 from typing import Tuple, Any
 import bgp
-import pandas as pd
 
 
 class TrieNode(object):
