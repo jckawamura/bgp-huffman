@@ -51,7 +51,7 @@ def leafpush(root):
             new_node.word_finished = True
             root.children.append(new_node)
             return
-        root.label = None
+        # root.label = None
 
 
 def find_prefix(root, prefix: str) -> Any:
@@ -68,6 +68,7 @@ def find_prefix(root, prefix: str) -> Any:
 
 if __name__ == "__main__":
     src = "files/amostra_bgp.txt"
+    # src = "files/lg.vix.ptt.br-20180201000001-IPv4-BGP.txt" # início na linha 15
     bgp_table = bgp.read_bgp(src, 1)
     ip_label_list = bgp.ip_next_hop(bgp_table)
 
@@ -80,10 +81,11 @@ if __name__ == "__main__":
     leafpush(root)
 
     print("Tabela BGP\n", bgp_table)
-    print("\nConversão da tabela BGP\n", ip_label_list)
+    # print("\nConversão da tabela BGP\n", ip_label_list)
 
     print("\nTestes:\n")
     print(find_prefix(root, bgp.ip_to_bin("0.0.0.0")))
     print(find_prefix(root, bgp.ip_to_bin("1.0.4.0")))
+    print(find_prefix(root, bgp.ip_to_bin("1.0.8.0")))
     print(find_prefix(root, bgp.ip_to_bin("1.0.16.0")))
     print(find_prefix(root, bgp.ip_to_bin("0.1.1.1")))
