@@ -3,9 +3,9 @@ import trie_ip
 
 
 def main():
-    src = "files/amostra_bgp.txt"
-    # src = "files/lg.vix.ptt.br-20180201000001-IPv4-BGP.txt" # início na linha 15
-    bgp_table = bgp.read_bgp(src, 1)
+    # src = "files/amostra_bgp.txt"
+    src = "files/bgp.txt"
+    bgp_table = bgp.read_bgp(src, 15)   # início na linha 15
     ip_label_list = bgp.ip_next_hop(bgp_table)
 
     root = trie_ip.TrieNode('*')

@@ -1,3 +1,17 @@
+spawn telnet lg.vix.ptt.br
+terminal length 0
+show ip bgp
+Trying 200.137.64.252...
+Connected to lg.vix.ptt.br.
+Escape character is '^]'.
+lg.vix.ptt.br> terminal length 0
+lg.vix.ptt.br> 
+lg.vix.ptt.br> show ip bgp
+BGP table version is 0, local router ID is 187.16.194.252
+Status codes: s suppressed, d damped, h history, * valid, > best, i - internal,
+              r RIB-failure, S Stale, R Removed
+Origin codes: i - IGP, e - EGP, ? - incomplete
+
    Network          Next Hop            Metric LocPrf Weight Path
 *  0.0.0.0/0        187.16.194.1                           0 53203 28173 i
 *>                  187.16.194.4                           0 53203 4230 i
