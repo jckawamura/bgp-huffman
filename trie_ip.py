@@ -66,7 +66,6 @@ def add(root, word: str, label: int):
 #
 # Continuing the previous example, the Binary Trie will look like this
 # at the end of step 2:
-# TODO: corrigir desenho
 #          +---+
 #          |   |
 #          +---+
@@ -76,7 +75,7 @@ def add(root, word: str, label: int):
 #      +---+   +---+
 #            0/     \1
 #          +---+   +---+
-#          |A,B|   |A,C|
+#          | B |   | C |
 #          +---+   +---+
 #
 # This trie yields the same match results as the original trie from
