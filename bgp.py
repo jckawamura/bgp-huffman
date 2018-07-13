@@ -14,7 +14,7 @@ def read_bgp(file, first_row):
     bgp = pd.read_fwf(file,
                       colspecs=[(1, 2), (3, 20), (20, 40)],
                       names=['Status', 'Network', 'Next Hop'],
-                      skiprows=first_row)   # ignora o cabeçalho original. Um novo cabeçalho é definido linha acima
+                      skiprows=first_row)  # ignora o cabeçalho original. Um novo cabeçalho é definido linha acima
 
     # Preenchimento das células vazias
     bgp['Network'].fillna(method='ffill', inplace=True)  # replica o IP anterior quando não houver (NaN)
@@ -46,6 +46,7 @@ def ip_next_hop(bgp: pd.DataFrame):
 
         ip_label.append([ip_bin, label])
     return ip_label
+
 
 # ip_to_bin(): conversão de IP para binário
 # Entrada:
