@@ -3,8 +3,8 @@ import trie_ip
 
 
 def main():
-    # src = "files/amostra_bgp.txt"
-    src = "files/bgp.txt"
+    src = "files/amostra_bgp.txt"
+    # src = "files/bgp.txt"
     bgp_table = bgp.read_bgp(src, 15)   # início na linha 15
     ip_label_list = bgp.ip_next_hop(bgp_table)
 
@@ -22,15 +22,15 @@ def main():
 
     # Consultas
     while True:
-        print("\nConsultar IP:\n")
+        print("Consultar IP:")
         print(trie_ip.find_prefix(root, bgp.ip_to_bin(input())))
 
     # Testes padrão
-    print(find_prefix(root, bgp.ip_to_bin("0.0.0.0")))
-    print(find_prefix(root, bgp.ip_to_bin("1.0.4.0")))
-    print(find_prefix(root, bgp.ip_to_bin("1.0.8.0")))
-    print(find_prefix(root, bgp.ip_to_bin("1.0.16.0")))
-    print(find_prefix(root, bgp.ip_to_bin("0.1.1.1")))
+    # print(trie_ip.find_prefix(root, bgp.ip_to_bin("0.0.0.0")))
+    # print(trie_ip.find_prefix(root, bgp.ip_to_bin("1.0.4.0")))
+    # print(trie_ip.find_prefix(root, bgp.ip_to_bin("1.0.8.0")))
+    # print(trie_ip.find_prefix(root, bgp.ip_to_bin("1.0.16.0")))
+    # print(trie_ip.find_prefix(root, bgp.ip_to_bin("0.1.1.1")))
 
 
 if __name__ == "__main__":
